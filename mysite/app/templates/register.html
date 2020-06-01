@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+{% extends 'imported.html'%}
+  {% load static%}
+</head>
+<html>
+{% block content%}
+    <body>
+    <section>
+    <form action="" method="post">
+        {% csrf_token %}
+      <div>
+        {{ form.username }}
+        </div>
+      <div>
+          {{form.email}}
+        </div>
+      <div>
+          {{form.password}}
+        </div>
+          <div>
+          {{form.repeat_password}}
+            <div id="text" class="background-text" style="font-size: 70%; color: #DC143C; opacity: 0"><span>Прозрачный текст</span></div>
+          </div>
+        <input type="submit" value="Submit" />
+    </form>
+      </section>
+
+     </body>
+{%endblock%}
+</html>
+          
