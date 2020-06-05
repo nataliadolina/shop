@@ -9,26 +9,16 @@
       </div>
     </div>
     <div class="row mt-5 align-items-top">
+      {% for object in objects%}
       <div class="col-12 col-sm-10 col-md-8 m-auto col-lg-4 text-left">
         <div class="rounded">
           <div class="bg-dark p-3 text-center">
-            <h2 class="font-weight-light">Startup</h2>
-            <p class="h2"><strong>$9.90</strong></p>
+            <a href = {{object.get_absolute_url}} class="h2"><strong>{{ object.name }}</strong></a>
           </div>
-
-          <div class="bg-gray p-5 text-center">
-            <p><img alt="image" height="40" src="https://cdn.jsdelivr.net/gh/froala/design-blocks@master/dist/imgs//icons/layers.svg"></p>
-            <p class="h4"><strong>For small companies</strong></p>
-            <p><br></p>
-            <p>10 hours of support</p>
-            <p>40MB of storage</p>
-            <p>Subdomain</p>
-
-            <p class="text-center pt-5"><a href="https://www.froala.com" class="btn btn-secondary">Choose Plan</a></p>
           </div>
         </div>
       </div>
-
+      {% endfor %}
       <div class="col-12 col-sm-10 col-md-8 m-auto col-lg-4 text-left pt-4 pt-lg-0">
         <div class="rounded">
           <div class="bg-dark p-3 text-center">
@@ -69,7 +59,6 @@
         </div>
       </div>
     </div>
-  </div>
 </section>
 <footer class="fdb-block footer-large bg-dark" data-block-type="footers" data-id="28">
   <div class="container">

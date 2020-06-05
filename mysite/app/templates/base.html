@@ -2,7 +2,7 @@
 <html lang="en">
 {% extends 'imported.html' %}
 <body>
-{% block content%}
+{% block start%}
 <header data-block-type="headers" data-id="17" class="">
     <nav id = "navbar-default" class="navbar navbar-default navbar-expand-lg">
       <div class="col-2 text-left">
@@ -17,17 +17,18 @@
 
       <div class="collapse navbar-collapse justify-content-center col-md-8" id="navbarNav4">
         <ul class="navbar-nav justify-content-center">
-          <li class="nav-item active">
-            <a class="nav-link" href="https://www.froala.com" contenteditable="false">Home <span class="sr-only">(current)</span></a>
+          <li class="nav-item">
+            <a class="btn btn-outline-dark" href="add_item/0" contenteditable="false">Add product</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="add_item" contenteditable="false">Add product</a>
+            <a type="button" href='register' class="btn btn-outline-dark">
+              Sign Up
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="register" contenteditable="false">Sign Up</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://www.froala.com" contenteditable="false">Team</a>
+            <a type="button" href='authorization' class="btn btn-outline-dark">
+              <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Sign in
+            </a>
           </li>
         </ul>
       </div>
@@ -87,6 +88,32 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/froala-editor/js/froala_editor.pkgd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+<div class="container">
+{% for good in goods%}
+  <img src="https://yandex.ru/search/?text=%D0%BF%D0%B0%D0%BD%D0%B4%D0%B0&clid=2233627&lr=213" alt="Card image cap">
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <img class="card-img-top" src="https://yadi.sk/i/Emloyb9Mw1tpfw" alt="Card image cap">
+        <h5 class="card-title">{{ good.name }}</h5>
+      {% if good.previous_price %}
+        <p class="card-text" style="text-decoration: line-through; color: #DC143C;">{{ good.previous_price }}</p>
+      {% endif %}
+        <p class="card-text">{{ good.price }}</p>
+        <a href="{{good.get_absolute_url}}" class="btn btn-primary">Buy</a>
+    </div>
+</div>
+{% endfor %}
+{% for good in sales_goods%}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">{{ good.name }}</h5>
+        <p class="card-text" style="text-decoration: line-through; color: #DC143C;">{{ good.previous_price }}</p>
+        <p class="card-text">{{ good.price }}</p>
+        <a href="{{good.get_absolute_url}}" class="btn btn-primary">Buy</a>
+    </div>
+</div>
+{% endfor %}
 {% endblock%}
+
 </body>
 </html>

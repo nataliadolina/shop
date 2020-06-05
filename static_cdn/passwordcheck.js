@@ -1,0 +1,1 @@
+$('#meter').entropizer({ target: '#password' });
