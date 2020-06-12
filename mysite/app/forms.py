@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from django.forms import forms, CharField, TextInput
+from django.forms import forms, CharField, TextInput, FileField
 from .models import Items, Marks, Cats
 from django.contrib.auth.models import User
 
@@ -35,3 +35,7 @@ class SignUp(forms.Form):
                          widget=TextInput(attrs={'required': True, "class": 'input', 'type': "password"}))
     repeat_password = CharField(label='Repeat your password', max_length=150,
                                 widget=TextInput(attrs={'required': True, "class": 'input', 'type': "password"}))
+
+
+class LoadExcelFile(forms.Form):
+    file = FileField(label='upload Excel file')
