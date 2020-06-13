@@ -52,13 +52,11 @@ def home(request):
     sales_goods = list(Items.objects.filter(on_sale=True))
     print(sales_goods)
     indexes, length = return_divisible_list(3, sales_goods)
-    sales_goods_indexes = np.array(indexes, int).reshape((length // 3, 3))
-    print(sales_goods_indexes)
+    sales_goods_indexes = np.array(indexes).reshape((length // 3, 3))
 
     goods = list(Items.objects.all())
-    print(goods)
     indexes, length = return_divisible_list(3, goods)
-    goods_indexes = np.array(indexes, int).reshape((length // 3, 3))
+    goods_indexes = np.array(indexes).reshape((length // 3, 3))
     return render(request, 'index.html',
                   {"goods": goods, 'sales_goods': sales_goods, "sales_goods_indexes": sales_goods_indexes,
                    "goods_indexes": goods_indexes})
@@ -73,7 +71,7 @@ def return_divisible_length(number, query):
 
 def return_divisible_list(number, query):
     query_length = len(query)
-    result = list(range(query_length)) + (number - query_length % number) * [-1]
+    result = list(query) + (number - query_length % number) * [-1]
     return result, len(result)
 
 
