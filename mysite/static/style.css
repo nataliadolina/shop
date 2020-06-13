@@ -1,7 +1,8 @@
 .navbar-default {
-    background-color: #c1ff91;
-    border-color: #E7E7E7;
-    width: 100%
+    background-color: #ff8a05;
+    border-color: #ff8a05;
+    width: 100%;
+    margin-bottom:0;
 }
 .navbar-nav {
 	width: 100%;
@@ -15,13 +16,25 @@
 .navbar-default .navbar-brand:focus {
     color: #5E5E5E;
 }
+.btn-primary{
+
+background-color: #2e7d6b;
+border-color: #2e7d6b;
+color: white;
+}
+.btn-primary: focus, .btn-primary: hover{
+
+background-color: #aee5d5;
+color: #000;
+border-color: #aee5d5;
+}
 a.vk-ic mr-3: focus
 {
     color: #c1ff91;
 }
 #header
 {
-   background: #c1ff91;
+   background: #ff8a05;
 }
 body, html {
   margin: 0;

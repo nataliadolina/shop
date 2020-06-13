@@ -4,7 +4,10 @@
 <body>
 {% block start%}
 <header data-block-type="headers" data-id="17" class="">
-    <nav id = "navbar-default" class="navbar navbar-default navbar-expand-lg">
+    <nav id = "navbar-default" class="navbar navbar-default navbar-expand-lg" style="background-color: #ff8a05;
+    border-color: #ff8a05;
+    width: 100%;
+    margin-bottom:0;">
       <div class="col-2 text-left">
         <a href="https://www.froala.com">
           <img src="https://cdn.jsdelivr.net/gh/froala/design-blocks@master/dist/imgs//logo.png" height="30" alt="image">
@@ -51,69 +54,56 @@
         </li>
       </ul>
     </nav>
+  <div class="jumbotron" style="margin-bottom:0;">
+  <h1 class="display-4">Hello, world!</h1>
+  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <a class="p-3 mb-2 bg-info text-white" href="#" role="button">Learn more</a>
+</div>
 </header>
-<div class="container-fluid">
-<section class="fdb-block fp-active" data-block-type="call_to_action" data-id="20" draggable="true">
-    <div class="row align-items-center justify-content-center">
-      <div class="col-auto text-center">
-        <a class="btn btn-outline-secondary" href="https://www.froala.com">Download</a>
-      </div>
-
-      <div class="col-auto mt-4 mt-sm-0">
-        <h2>Use Froala Design Blocks for free in your project</h2>
-      </div>
-    </div>
-</section>
-   </div>
-<nav class="navbar navbar-dark bg-dark">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      {% for cat in cats_nav%}
-      <li class="nav-item active">
-        <a class="nav-link" href="landing_page/{{cats.name}}">{{cat.name}}</a>
-      </li>
-      {%endfor%}
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/froala-editor/js/froala_editor.pkgd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-<div class="container">
-{% for good in goods%}
-  <img src="https://yandex.ru/search/?text=%D0%BF%D0%B0%D0%BD%D0%B4%D0%B0&clid=2233627&lr=213" alt="Card image cap">
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <img class="card-img-top" src="https://yadi.sk/i/Emloyb9Mw1tpfw" alt="Card image cap">
-        <h5 class="card-title">{{ good.name }}</h5>
-      {% if good.previous_price %}
-        <p class="card-text" style="text-decoration: line-through; color: #DC143C;">{{ good.previous_price }}</p>
-      {% endif %}
-        <p class="card-text">{{ good.price }}</p>
-        <a href="{{good.get_absolute_url}}" class="btn btn-primary">Buy</a>
-    </div>
-</div>
-{% endfor %}
-{% for good in sales_goods%}
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title">{{ good.name }}</h5>
-        <p class="card-text" style="text-decoration: line-through; color: #DC143C;">{{ good.previous_price }}</p>
-        <p class="card-text">{{ good.price }}</p>
-        <a href="{{good.get_absolute_url}}" class="btn btn-primary">Buy</a>
-    </div>
-</div>
-{% endfor %}
-{% endblock%}
+{%block content%}
+{% endblock %}
+<footer class="fdb-block footer-large bg-dark" data-block-type="footers" data-id="28">
+  <div class="container">
+    <div class="row align-items-top text-center text-md-left">
+      <div class="col-12 col-sm-6 col-md-4">
+        <h3><strong>Country A</strong></h3>
+        <p>Street Address 52<br>Contact Name</p>
+        <p>+44 827 312 5002</p>
+        <p><a href="https://www.froala.com">countrya@amazing.com</a></p>
+      </div>
 
+      <div class="col-12 col-sm-6 col-md-4 mt-4 mt-sm-0">
+        <h3><strong>Country B</strong></h3>
+        <p>Street Address 100<br>Contact Name</p>
+        <p>+13 827 312 5002</p>
+        <p><a href="https://www.froala.com">countryb@amazing.com</a></p>
+      </div>
+
+      <div class="col-12 col-md-4 mt-5 mt-md-0 text-md-left">
+        <h3><strong>About Us</strong></h3>
+        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col text-center">
+        © 2018 Froala. All Rights Reserved
+      </div>
+    </div>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/froala-editor/js/froala_editor.pkgd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
 </body>
+{% endblock%}
 </html>

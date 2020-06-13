@@ -9,6 +9,7 @@ from django.views.generic.edit import FormView
 import win32com.client
 import openpyxl
 from io import BytesIO
+import numpy as np
 
 
 def index(request):
@@ -47,10 +48,33 @@ def add_user(request):
 
 
 def home(request):
-    sales_goods = Items.objects.filter(on_sale=True)
-    goods = Items.objects.all()
-    print(Items.objects.get(id=1).on_sale, Items.objects.get(id=1).name, Items.objects.get(id=1).previous_price)
-    return render(request, 'base.html', {"goods": goods, 'sales_goods': sales_goods, 'cats_nav': None})
+    # make array to make a neat layout in template
+    sales_goods = list(Items.objects.filter(on_sale=True))
+    print(sales_goods)
+    indexes, length = return_divisible_list(3, sales_goods)
+    sales_goods_indexes = np.array(indexes, int).reshape((length // 3, 3))
+    print(sales_goods_indexes)
+
+    goods = list(Items.objects.all())
+    print(goods)
+    indexes, length = return_divisible_list(3, goods)
+    goods_indexes = np.array(indexes, int).reshape((length // 3, 3))
+    return render(request, 'index.html',
+                  {"goods": goods, 'sales_goods': sales_goods, "sales_goods_indexes": sales_goods_indexes,
+                   "goods_indexes": goods_indexes})
+
+
+def return_divisible_length(number, query):
+    length = len(query)
+    if length % number == 0:
+        return length, length
+    return length // number + number, length
+
+
+def return_divisible_list(number, query):
+    query_length = len(query)
+    result = list(range(query_length)) + (number - query_length % number) * [-1]
+    return result, len(result)
 
 
 def all_items(request, name):
@@ -96,9 +120,9 @@ def get_excel_file(request):
                 cat.save()
             if name.value:
                 item = Items(name=name.value, marks=marks, category=cat, price=price.value,
-                                 previous_price=previous_price.value, on_sale=on_sale,
-                                 article_number=str(article_number.value), description=description.value,
-                                 picture=picture.value, video=video.value)
+                             previous_price=previous_price.value, on_sale=on_sale,
+                             article_number=str(article_number.value), description=description.value,
+                             picture=picture.value, video=video.value)
                 item.save()
                 row += 1
             else:
